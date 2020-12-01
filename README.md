@@ -1,2 +1,2 @@
 # RexMentum
-clon coding of chrome app 'momentum'
+clone coding of chrome app 'momentum'
