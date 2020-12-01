@@ -4,12 +4,13 @@ body {
 }
 
 input {
-  width: 100%;
+  width: 70%;
 }
 
 ul, 
 li {
   margin: 10px;
   width: 90%;
+  list-style: none;
 }
 

@@ -20,15 +20,54 @@ function saveFinishedToDos() {
 function deleteToDo(event) {
   const button = event.target;
   const li = button.parentNode;
-  toDoList.removeChild(li)
+  const ul = li.parentNode;
+  ul.removeChild(li)
 
   const cleanToDo = toDos.filter((toDo) => toDo.id !== parseInt(li.id))
   toDos = cleanToDo;
-  saveToDos(toDos);
+  saveToDos();
 }
 
-function finishToDo() {
+function deleteFinishedToDo(event) {
+  const button = event.target;
+  const li = button.parentNode;
+  
+  finishedToDoList.removeChild(li)
 
+  const cleanToDo = finishedToDos.filter((toDo) => toDo.id !== parseInt(li.id))
+  finishedToDos = cleanToDo;
+  saveFinishedToDos();
+}
+
+function finishToDo(event) {
+  const button = event.target;
+  const li = button.parentNode;
+  const ul = li.parentNode;
+  const span = li.querySelector("span")
+
+  addFinishToDo(span.innerText)
+  ul.removeChild(li);
+  
+  const cleanToDo = toDos.filter((toDo) => toDo.id !== parseInt(li.id))
+  toDos = cleanToDo;
+
+  saveToDos();
+  saveFinishedToDos();
+}
+
+function reloadToDo(event) {
+  const button = event.target;
+  const li = button.parentNode;
+  const ul = li.parentNode;
+  const span = li.querySelector("span")
+
+  addToDo(span.innerText)
+  ul.removeChild(li);
+
+  const cleanToDo = finishedToDos.filter((toDo) => toDo.id !== parseInt(li.id))
+  finishedToDos = cleanToDo;
+  saveToDos();
+  saveFinishedToDos();
 }
 
 function addToDo(text) {
@@ -74,8 +113,8 @@ function addFinishToDo(text) {
   reloadBtn.innerText = "🆙";
   span.innerText = text;
 
-  deleteBtn.addEventListener("click", deleteToDo);
-  // reloadBtn.addEventListener("click", reloadToDo);
+  deleteBtn.addEventListener("click", deleteFinishedToDo);
+  reloadBtn.addEventListener("click", reloadToDo);
 
   li.appendChild(deleteBtn);
   li.appendChild(reloadBtn);
