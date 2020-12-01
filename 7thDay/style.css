@@ -1,0 +1,15 @@
+body {
+  margin: 10px 100px;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+}
+
+ul, 
+li {
+  margin: 10px;
+  width: 90%;
+}
+
