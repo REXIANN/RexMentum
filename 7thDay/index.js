@@ -1,6 +1,7 @@
 const toDoForm = document.querySelector(".todo-form"),
     toDoInput = toDoForm.querySelector("input"),
-    toDoList = document.querySelector(".todo-list");
+    toDoList = document.querySelector(".todo-list"),
+    finishedToDoList = document.querySelector(".finished-todo-list");
 
 const TODOS_LS = "toDos",
     FINISHED_TODOS_LS = "finishedToDos";
@@ -10,6 +11,10 @@ let finishedToDos = [];
 
 function saveToDos() {
   localStorage.setItem(TODOS_LS, JSON.stringify(toDos))
+}
+
+function saveFinishedToDos() {
+  localStorage.setItem(FINISHED_TODOS_LS, JSON.stringify(finishedToDos))
 }
 
 function deleteToDo(event) {
@@ -58,15 +63,52 @@ function addToDo(text) {
   saveToDos(toDo);
 }
 
+function addFinishToDo(text) {
+  const li = document.createElement("li"),
+      deleteBtn = document.createElement("button"),
+      reloadBtn = document.createElement("button"),
+      span = document.createElement("span"),
+      newId = finishedToDos.length + 1;
+  
+  deleteBtn.innerText = "🚫";
+  reloadBtn.innerText = "🆙";
+  span.innerText = text;
+
+  deleteBtn.addEventListener("click", deleteToDo);
+  // reloadBtn.addEventListener("click", reloadToDo);
+
+  li.appendChild(deleteBtn);
+  li.appendChild(reloadBtn);
+  li.appendChild(span);
+  li.id = newId;
+  
+  finishedToDoList.appendChild(li);
+
+  const finishedToDo = {
+    text: text,
+    id: newId
+  }
+
+  finishedToDos.push(finishedToDo)
+  saveFinishedToDos();
+}
+
 function loadToDos() {
   const savedToDos = localStorage.getItem(TODOS_LS),
-      finishedToDos = localStorage.getItem(FINISHED_TODOS_LS)
-  console.log(savedToDos)
+      finishedToDos = localStorage.getItem(FINISHED_TODOS_LS);
+  
   if (savedToDos !== null) {
     const parsedToDos = JSON.parse(savedToDos);
     console.log(parsedToDos);
     parsedToDos.forEach(function (toDo) {
       addToDo(toDo.text);
+    })
+  }
+
+  if (finishedToDos !== null) {
+    const parsedToDos = JSON.parse(finishedToDos);
+    parsedToDos.forEach(function (toDo) {
+      addFinishToDo(toDo.text)
     })
   }
 }
