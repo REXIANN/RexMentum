@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
+
 <body>
   <h1>Random Number Game</h1>
-  <h2>generate a number between 0 and 10</h2>
-  <input type="range">
+  <h2 class="game-notice">generate a number between 0 and 10</h2>
+
+  <input class="game-input" type="range" min="1" max="200" value="10" />
+
+  <div>
+    <span>Guess the number</span>
+    <form class="user-form">
+      <input class="user-input" type="number">
+      <input type="submit" value="play!" />
+    </form>
+  </div>
+  <h3 class="compare-values"></h3>
+  <h3 class="result"></h3>
   <script src="index.js"></script>
 </body>
+
 </html>
