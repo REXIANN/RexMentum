@@ -1,11 +1,25 @@
 body {
   background-color: #1c1c1c;
   color: white;
+  
 }
 
 div {
-  margin: 10px;
+  width: 100px;
+  height: 40px;
+  margin: 2px;
   border-radius: 10px;
+  padding: 2px 50px;
+
+  text-align: center;
+  
+}
+
+span {
+  vertical-align: middle;
+}
+.calc-row {
+  display: flex;
 }
 
 .clear-block {
