@@ -1,0 +1,21 @@
+body {
+  background-color: #1c1c1c;
+  color: white;
+}
+
+div {
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.clear-block {
+  background-color: #d4d4d2;
+}
+
+.num-block {
+  background-color: #505050;
+}
+
+.oper-block {
+  background-color: #ff9500;
+}
