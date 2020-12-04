@@ -1,35 +1,45 @@
 body {
   background-color: #1c1c1c;
   color: white;
+  text-align: center;
   
 }
 
 div {
   width: 100px;
   height: 40px;
-  margin: 2px;
   border-radius: 10px;
-  padding: 2px 50px;
-
+  padding: 2px 5px;
   text-align: center;
-  
 }
 
 span {
-  vertical-align: middle;
+  width: 20px;
 }
+
 .calc-row {
-  display: flex;
+  width: 550px;
+  margin: 5px 2px;
 }
 
 .clear-block {
+  display: inline-block;
+  width: 100px;
   background-color: #d4d4d2;
 }
 
 .num-block {
+  display: inline-block;
+  width: 100px;
   background-color: #505050;
 }
 
 .oper-block {
+  display: inline-block;
+  width: 100px;
   background-color: #ff9500;
+}
+
+#zero {
+  width: 215px;
 }
